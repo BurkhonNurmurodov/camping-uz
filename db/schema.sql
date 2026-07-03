@@ -1,5 +1,5 @@
 -- ============================================================
---  Camping Uzbekistan — database schema
+--  Silk Naviora — database schema
 --  MySQL 8 / MariaDB 10.4+  ·  utf8mb4
 --  Bilingual content stored as *_en / *_ru columns.
 --  Rich text (about / tour description / testimonial) is authored in Quill and

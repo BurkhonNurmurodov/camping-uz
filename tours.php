@@ -10,7 +10,7 @@ foreach (db_all("SELECT tc.tour_id, c.slug, c.title_en, c.title_ru FROM tour_cat
     $tourCats[$r['tour_id']][] = $r;
 }
 
-$head_title = t('sec_upcoming_tours') . ' — ' . setting('agency_name_' . $lang, 'Camping Uzbekistan');
+$head_title = t('sec_upcoming_tours') . ' — ' . setting('agency_name_' . $lang, 'Silk Naviora');
 require __DIR__ . '/partials/head.php';
 ?>
 

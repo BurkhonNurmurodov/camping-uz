@@ -67,7 +67,7 @@ if (input('registered') === '1') {
     $done = true;
 }
 
-$head_title = t('register_title') . ' — ' . setting('agency_name_' . $lang, 'Camping Uzbekistan');
+$head_title = t('register_title') . ' — ' . setting('agency_name_' . $lang, 'Silk Naviora');
 require __DIR__ . '/partials/head.php';
 ?>
 

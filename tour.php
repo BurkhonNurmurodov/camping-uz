@@ -55,7 +55,7 @@ function guide_social(array $s): array
     ];
 }
 
-$head_title = $title . ' — ' . setting('agency_name_' . $lang, 'Camping Uzbekistan');
+$head_title = $title . ' — ' . setting('agency_name_' . $lang, 'Silk Naviora');
 require __DIR__ . '/partials/head.php';
 ?>
 

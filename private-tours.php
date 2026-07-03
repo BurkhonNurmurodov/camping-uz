@@ -34,7 +34,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     }
 }
 
-$head_title = ($lang === 'ru' ? 'Индивидуальные туры' : 'Private Tours') . ' — ' . setting('agency_name_' . $lang, 'Camping Uzbekistan');
+$head_title = ($lang === 'ru' ? 'Индивидуальные туры' : 'Private Tours') . ' — ' . setting('agency_name_' . $lang, 'Silk Naviora');
 require __DIR__ . '/partials/head.php';
 ?>
 

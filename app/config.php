@@ -1,6 +1,6 @@
 <?php
 /**
- * Camping Uzbekistan — configuration.
+ * Silk Naviora — configuration.
  *
  * Real secrets go in app/config.local.php (git-ignored). It is loaded FIRST so
  * its define()s win; the guarded defaults below only fill in what it omits.

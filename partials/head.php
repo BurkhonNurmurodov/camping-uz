@@ -3,7 +3,7 @@
  * Public <head> + body open + preloader + header.
  * Expects $head_title. Public pages require app/bootstrap.php first.
  */
-$head_title = $head_title ?? setting('agency_name_' . current_lang(), 'Camping Uzbekistan');
+$head_title = $head_title ?? setting('agency_name_' . current_lang(), 'Silk Naviora');
 ?>
 <!DOCTYPE html>
 <html lang="<?= e(current_lang()) ?>">

@@ -15,7 +15,7 @@ $reviews = db_all("SELECT * FROM testimonials WHERE is_visible=1 ORDER BY sort_o
 $heroType  = setting('hero_type', 'image');
 $heroImage = setting('hero_image');
 $heroVideo = setting('hero_video');
-$name = setting('agency_name_' . $lang, 'Camping Uzbekistan');
+$name = setting('agency_name_' . $lang, 'Silk Naviora');
 $moto = setting('moto_' . $lang, $lang === 'ru' ? 'Настоящие путешествия по Центральной Азии' : 'Real journeys across Central Asia');
 
 $head_title = $name;

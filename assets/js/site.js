@@ -1,4 +1,4 @@
-/* Camping Uzbekistan — public site behaviour (layered on theme.js). */
+/* Silk Naviora — public site behaviour (layered on theme.js). */
 (function ($) {
     'use strict';
 

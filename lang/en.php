@@ -4,7 +4,7 @@
  */
 return [
     // generic
-    'site_name'        => 'Camping Uzbekistan',
+    'site_name'        => 'Silk Naviora',
     'read_more'        => 'View more',
     'view_all'         => 'View all',
     'send'             => 'Send',

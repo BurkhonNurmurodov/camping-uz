@@ -3,7 +3,7 @@
  * Public footer.
  */
 $lang = current_lang();
-$name = setting('agency_name_' . $lang, 'Camping Uzbekistan');
+$name = setting('agency_name_' . $lang, 'Silk Naviora');
 $moto = setting('moto_' . $lang, '');
 $logoImage = setting('logo_image');
 $logoLight = setting('logo_image_light') ?: $logoImage;

@@ -1,4 +1,4 @@
-# Camping Uzbekistan
+# Silk Naviora
 
 Bilingual (EN/RU) travel-agency website + admin panel.
 

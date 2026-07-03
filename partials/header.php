@@ -4,7 +4,7 @@
  * (sticky handled by theme.js toggling .sticky on .header-navigation).
  */
 $lang = current_lang();
-$name = setting('agency_name_' . $lang, 'Camping Uzbekistan');
+$name = setting('agency_name_' . $lang, 'Silk Naviora');
 $logoDark = setting('logo_image');
 $logoLight = setting('logo_image_light') ?: $logoDark;
 // Nav targets: section anchors live on the home page, so prefix with index.php.

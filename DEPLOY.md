@@ -1,4 +1,4 @@
-# Deployment guide — Camping Uzbekistan
+# Deployment guide — Silk Naviora
 
 A plain PHP + MySQL app. Works on standard shared hosting (Apache + mod_php),
 a VPS (Apache or Nginx + PHP-FPM), or anything that serves PHP 8.
