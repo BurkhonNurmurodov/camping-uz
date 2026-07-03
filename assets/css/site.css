@@ -1,0 +1,411 @@
+/* ===========================================================
+   Camping Uzbekistan — public site styles (layered on Gowilds)
+   Palette: green #63ab45 / deep #0b3d2c / ink #1c231f / sand #f7921e
+   =========================================================== */
+
+:root{
+  --cu-green:#63ab45; --cu-deep:#0b3d2c; --cu-ink:#1c231f; --cu-sand:#f7921e;
+}
+
+/* ---------- Header: transparent → sticky, logo scales ---------- */
+.header-area.header-one .header-navigation{
+  position:absolute; left:0; top:0; width:100%; z-index:60;
+  background:transparent; padding:22px 0; transition:background .35s, box-shadow .35s, padding .35s;
+}
+.header-area.header-one .header-navigation.sticky{
+  position:fixed; background:#fff; box-shadow:0 4px 24px rgba(28,35,31,.10);
+  padding:12px 0; animation:cuSlideDown .45s ease;
+}
+@keyframes cuSlideDown{from{transform:translateY(-100%)}to{transform:translateY(0)}}
+
+.cu-wordmark{
+  display:inline-block; font-family:"Prompt",sans-serif; font-weight:800; font-size:23px;
+  letter-spacing:.4px; color:var(--cu-ink); line-height:1; transform-origin:left center;
+  transition:transform .35s ease, color .35s ease;
+}
+/* 1.5× bigger while the header is transparent (top of page) */
+.transparent-header .header-navigation:not(.sticky) .site-branding .cu-wordmark{ color:#fff; transform:scale(1.5); }
+.header-navigation.sticky .site-branding .cu-wordmark{ color:var(--cu-ink); transform:scale(1); }
+.cu-wordmark--dark{ color:var(--cu-ink); }
+.cu-wordmark--light{ color:#fff; font-size:28px; }
+
+/* Nav link colours for each state */
+.header-navigation .main-menu > ul > li > a{ color:var(--cu-ink); font-weight:500; }
+.header-navigation .main-menu > ul > li > a:hover{ color:var(--cu-green); }
+.header-navigation.sticky .main-menu > ul > li > a{ color:var(--cu-ink); }
+.header-navigation.sticky .main-menu > ul > li > a:hover{ color:var(--cu-green); }
+
+/* Only make text white on desktop when transparent */
+@media (min-width: 1200px) {
+  .transparent-header .header-navigation:not(.sticky) .main-menu > ul > li > a { color:#fff; }
+}
+
+/* Toggler icon color */
+.transparent-header .header-navigation:not(.sticky) .navbar-toggler span { background-color: #fff; }
+
+/* Dual Logo Swapping */
+.logo-light { display: none; }
+.transparent-header .header-navigation:not(.sticky) .brand-logo .logo-dark { display: none; }
+.transparent-header .header-navigation:not(.sticky) .brand-logo .logo-light { display: inline-block; }
+
+/* Language switcher */
+.cu-lang{ display:flex; align-items:center; gap:6px; }
+.cu-lang a{ color:var(--cu-ink); font-weight:600; font-size:14px; opacity:.75; }
+.transparent-header .header-navigation:not(.sticky) .cu-lang a{ color:#fff; }
+.cu-lang a.active,.cu-lang a:hover{ opacity:1; color:var(--cu-green); }
+.cu-lang-sep{ color:var(--cu-ink); opacity:.5; }
+.transparent-header .header-navigation:not(.sticky) .cu-lang-sep{ color:#fff; }
+.nav-right-item{ display:flex; align-items:center; gap:22px; }
+
+/* ---------- Hero: exactly 100vh, image or video bg ---------- */
+.cu-hero{
+  position:relative; height:100vh; min-height:560px; display:flex; align-items:center;
+  justify-content:center; text-align:center; overflow:hidden; color:#fff;
+}
+.cu-hero__bg{ position:absolute; inset:0; }
+.cu-hero__bg img,.cu-hero__bg video{ width:100%; height:100%; object-fit:cover; }
+.cu-hero__overlay{ position:absolute; inset:0;
+  background:linear-gradient(180deg, rgba(11,61,44,.40) 0%, rgba(28,35,31,.70) 100%); }
+.cu-hero__content{ position:relative; z-index:2; max-width:840px; padding:0 22px; }
+.cu-hero__title{ color:#fff; font-weight:800; line-height:1.06; margin:0 0 18px;
+  font-size:clamp(38px,6vw,70px); }
+.cu-hero__moto{ font-size:clamp(16px,2.2vw,21px); opacity:.94; margin:0 0 36px; font-weight:300; }
+.cu-hero__scroll{ position:absolute; bottom:26px; left:50%; transform:translateX(-50%); z-index:2;
+  color:#fff; opacity:.8; font-size:22px; animation:cuBob 1.8s infinite; }
+@keyframes cuBob{0%,100%{transform:translate(-50%,0)}50%{transform:translate(-50%,8px)}}
+
+/* ---------- Decorative Hero Background (Fallback) ---------- */
+.cu-hero-decor {
+    background-color: #161b18 !important; /* Dark ink base */
+    background-image: 
+        radial-gradient(circle at 15% 100%, rgba(99, 171, 69, 0.3) 0%, transparent 60%),
+        radial-gradient(circle at 85% 0%, rgba(247, 146, 30, 0.15) 0%, transparent 50%),
+        linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px) !important;
+    background-size: 100% 100%, 100% 100%, 40px 40px, 40px 40px !important;
+    background-position: center center !important;
+}
+
+/* ---------- Sections ---------- */
+.cu-section{ padding:95px 0; }
+.cu-section--tint{ background:#f9f9f7; }
+.cu-sec-head{ margin-bottom:46px; }
+.cu-sec-head .sub-title{ color:var(--cu-green); font-weight:600; text-transform:uppercase; letter-spacing:1px; }
+.cu-sec-head h2{ font-weight:700; margin-top:8px; }
+.cu-sec-head h2 a{ color:inherit; }
+.cu-sec-head h2 a:hover{ color:var(--cu-green); }
+
+/* ---------- Tour card (4:3) ---------- */
+.cu-tour-card{ background:#fff; border-radius:14px; overflow:hidden; display:flex; flex-direction:column; height:100%;
+  box-shadow:0 10px 30px rgba(28,35,31,.08); transition:transform .3s, box-shadow .3s; }
+.cu-tour-card:hover{ transform:translateY(-6px); box-shadow:0 18px 42px rgba(28,35,31,.15); }
+.cu-tour-card__media{ display:block; aspect-ratio:4/3; overflow:hidden; background:#eef0ee; flex-shrink:0; }
+.cu-tour-card__media img{ width:100%; height:100%; object-fit:cover; transition:transform .55s ease; }
+.cu-tour-card:hover .cu-tour-card__media img{ transform:scale(1.06); }
+.cu-tour-card__placeholder{ display:flex; align-items:center; justify-content:center; height:100%;
+  font-size:42px; color:#c2c7c2; }
+.cu-tour-card__body{ padding:20px 22px 24px; display:flex; flex-direction:column; flex-grow:1; }
+.cu-tour-card__title{ font-size:20px; font-weight:600; margin:0 0 8px; }
+.cu-tour-card__title a{ color:var(--cu-ink); }
+.cu-tour-card__title a:hover{ color:var(--cu-green); }
+.cu-tour-card__date{ color:var(--cu-green); font-weight:500; font-size:15px; margin:0 0 14px; }
+.cu-tour-card__date i{ margin-right:6px; }
+.cu-tour-card__more{ font-weight:600; color:var(--cu-ink); margin-top:auto; }
+.cu-tour-card__more i{ margin-left:6px; transition:margin .25s; }
+.cu-tour-card__more:hover{ color:var(--cu-green); }
+.cu-tour-card__more:hover i{ margin-left:11px; }
+
+/* Fix equal height for tours slider */
+.cu-tours-carousel .slick-track { display: flex !important; }
+.cu-tours-carousel .slick-slide { height: auto; }
+.cu-tours-carousel .slick-slide > div { height: 100%; }
+
+/* Carousel spacing */
+.cu-tours-carousel .slick-list{ margin:0 -13px; padding:10px 0 24px; }
+.cu-tours-carousel .slick-slide{ margin:0 13px; }
+.cu-tours-arrows{ display:flex; gap:10px; justify-content:center; margin-top:10px; }
+.cu-tours-arrows .prev,.cu-tours-arrows .next{ width:46px; height:46px; border-radius:50%;
+  display:flex; align-items:center; justify-content:center; background:#fff; color:var(--cu-ink);
+  box-shadow:0 6px 18px rgba(28,35,31,.12); cursor:pointer; transition:.25s; }
+.cu-tours-arrows .prev:hover,.cu-tours-arrows .next:hover{ background:var(--cu-green); color:#fff; }
+
+/* Grid (tours page) */
+.cu-tours-grid .cu-tour-card{ margin-bottom:30px; }
+
+/* ---------- Rich text (about / tour description) ---------- */
+.cu-richtext{ font-size:17px; line-height:1.8; color:#484848; }
+.cu-richtext h1,.cu-richtext h2,.cu-richtext h3,.cu-richtext h4{ color:var(--cu-ink); margin:1.4em 0 .5em; }
+.cu-richtext p{ margin:0 0 1.1em; }
+.cu-richtext img{ max-width:100%; height:auto; border-radius:10px; margin:.5em 0; }
+.cu-richtext blockquote{ border-left:4px solid var(--cu-green); padding:6px 18px; margin:1.2em 0;
+  color:var(--cu-ink); background:#f3f6f1; border-radius:0 8px 8px 0; }
+.cu-richtext pre,.cu-richtext code{ background:#1c231f; color:#e8efe6; border-radius:6px; }
+.cu-richtext code{ padding:2px 6px; font-size:.9em; }
+.cu-richtext pre{ padding:14px 16px; overflow:auto; }
+
+/* Typographic formatting */
+.cu-richtext b, .cu-richtext strong { font-weight: 700; }
+.cu-richtext i, .cu-richtext em { font-style: italic; }
+.cu-richtext u { text-decoration: underline; }
+.cu-richtext s, .cu-richtext strike, .cu-richtext del { text-decoration: line-through; }
+
+/* Lists */
+.cu-richtext ul { list-style-type: disc; padding-left: 1.5em; margin: 0 0 1.1em; }
+.cu-richtext ol { list-style-type: decimal; padding-left: 1.5em; margin: 0 0 1.1em; }
+.cu-richtext li { margin-bottom: 0.3em; }
+
+/* Alignments */
+.cu-richtext .ql-align-left{ text-align:left; }
+.cu-richtext .ql-align-center{ text-align:center; }
+.cu-richtext .ql-align-right{ text-align:right; }
+.cu-richtext .ql-align-justify{ text-align:justify; }
+.cu-richtext iframe{ max-width:100%; border:0; border-radius:10px; }
+.cu-richtext .spoiler{ background:var(--cu-ink); color:transparent; border-radius:3px; padding:0 .25em; cursor:pointer; transition:.2s; }
+.cu-richtext .spoiler.revealed{ background:#e9ece8; color:inherit; }
+
+/* ---------- Testimonials (reuses gw-testimonial-item) ---------- */
+.cu-review-comment{ font-size:17px; line-height:1.75; color:#484848; }
+.cu-review-comment .spoiler{ background:var(--cu-ink); color:transparent; border-radius:3px; padding:0 .25em; cursor:pointer; }
+.cu-review-comment .spoiler.revealed{ background:#e9ece8; color:inherit; }
+
+/* ---------- Trip details ---------- */
+.cu-detail-hero{ aspect-ratio:4/3; max-height:520px; width:100%; object-fit:cover; border-radius:16px; }
+.cu-detail-meta{ color:var(--cu-green); font-weight:500; font-size:18px; }
+.cu-route-map{ width:100%; height:430px; border-radius:16px; overflow:hidden; background:#eef0ee; }
+
+/* ---------- Guides ---------- */
+.cu-guide{ text-align:center; cursor:pointer; padding:14px 8px; border-radius:14px; transition:.25s; }
+.cu-guide:hover{ background:#f3f6f1; }
+.cu-guide__avatar{ width:118px; height:118px; border-radius:50%; object-fit:cover; margin:0 auto 14px;
+  border:4px solid #fff; box-shadow:0 8px 22px rgba(28,35,31,.14); background:#eef0ee; }
+.cu-guide__name{ font-weight:600; font-size:17px; color:var(--cu-ink); margin:0; }
+.cu-guide-modal .modal-content{ border:0; border-radius:18px; overflow:hidden; }
+.cu-guide-modal__avatar{ width:130px; height:130px; border-radius:50%; object-fit:cover;
+  border:4px solid #fff; box-shadow:0 8px 22px rgba(28,35,31,.16); margin:-70px auto 14px; background:#eef0ee; position:relative; }
+.cu-guide-modal__top{ height:90px; background:linear-gradient(120deg,var(--cu-deep),var(--cu-green)); }
+.cu-guide-modal__socials a{ display:inline-flex; width:40px; height:40px; border-radius:50%;
+  align-items:center; justify-content:center; background:#f3f6f1; color:var(--cu-ink); margin:0 4px; transition:.25s; }
+.cu-guide-modal__socials a:hover{ background:var(--cu-green); color:#fff; }
+.cu-guide-modal__socials img{ width:18px; height:18px; object-fit:contain; }
+
+/* ---------- Contact ---------- */
+.cu-contact-form .form_group{ margin-bottom:20px; }
+.cu-contact-form .form_control{ width:100%; height:56px; border:1px solid #e1e1e1; border-radius:10px;
+  padding:0 18px; background:#fff; transition:border .25s; }
+.cu-contact-form textarea.form_control{ height:150px; padding:16px 18px; }
+.cu-contact-form .form_control:focus{ border-color:var(--cu-green); outline:0; }
+
+/* ---------- Accessibility ---------- */
+.screen-reader-text{ border:0; clip:rect(1px,1px,1px,1px); -webkit-clip-path:inset(50%); clip-path:inset(50%);
+  height:1px; margin:-1px; overflow:hidden; padding:0; position:absolute; width:1px; word-wrap:normal!important; }
+
+@media (max-width: 1199px) {
+  /* Slide-out menu background is white, so links must be dark */
+  .navigation-white.header-navigation .main-menu ul > li > a {
+    color: var(--cu-ink) !important;
+  }
+  
+  /* Hamburger icon colors based on header state */
+  .navigation-white.header-navigation.sticky .navbar-toggler span {
+    background-color: var(--cu-ink) !important;
+  }
+  .navigation-white.header-navigation.sticky .navbar-toggler {
+    border-color: rgba(0, 0, 0, 0.7) !important;
+  }
+  .navigation-white.header-navigation:not(.sticky) .navbar-toggler span {
+    background-color: #fff !important;
+  }
+  .navigation-white.header-navigation:not(.sticky) .navbar-toggler {
+    border-color: rgba(255, 255, 255, 0.8) !important;
+  }
+}
+/* Visible keyboard focus */
+a:focus-visible, button:focus-visible, .main-btn:focus-visible,
+.form_control:focus-visible, input:focus-visible, textarea:focus-visible{
+  outline:2px solid var(--cu-green); outline-offset:2px;
+}
+/* Respect reduced-motion: never leave WOW content hidden, kill animations */
+@media (prefers-reduced-motion: reduce){
+  .wow{ visibility:visible!important; animation:none!important; }
+  *,*::before,*::after{ animation-duration:.001ms!important; transition-duration:.001ms!important; scroll-behavior:auto!important; }
+  .cu-hero__scroll{ animation:none!important; }
+}
+
+/* ---------- Misc ---------- */
+.cu-empty{ text-align:center; color:#8a8f8a; padding:60px 0; }
+@media (max-width:1199px){
+  .transparent-header .header-navigation:not(.sticky) .site-branding .cu-wordmark{ transform:scale(1.25); }
+}
+@media (max-width:575px){
+  .cu-wordmark{ font-size:18px; }
+  .transparent-header .header-navigation:not(.sticky) .site-branding .cu-wordmark{ transform:scale(1.12); }
+  .cu-section{ padding:64px 0; }
+  .cu-sec-head{ margin-bottom:32px; }
+}
+
+/* ---------- Testimonials Redesign ---------- */
+/* Fix equal height for slick slider */
+.slider-active-3-item-dot .slick-track {
+    display: flex !important;
+}
+.slider-active-3-item-dot .slick-slide {
+    height: auto;
+}
+.cu-testimonial-card-wrap {
+    padding: 20px 10px; /* Space for shadow and gaps during slider */
+    height: 100%;
+}
+.cu-testimonial-card {
+    background: #fff;
+    border-radius: 16px;
+    padding: 35px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.06);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+.cu-testimonial-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 40px rgba(0,0,0,0.1);
+}
+.cu-quote-icon {
+    color: var(--cu-green);
+    margin-bottom: 20px;
+    opacity: 0.5;
+}
+.cu-testimonial-text {
+    flex-grow: 1;
+    font-size: 16px;
+    line-height: 1.7;
+    color: var(--cu-ink);
+    margin-bottom: 30px;
+    font-style: italic;
+}
+.cu-testimonial-text p:last-child {
+    margin-bottom: 0;
+}
+.cu-author-meta {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    border-top: 1px solid #eee;
+    padding-top: 20px;
+}
+.cu-author-avatar {
+    width: 56px;
+    height: 56px;
+    border-radius: 50%;
+    object-fit: cover;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+.cu-author-name {
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--cu-ink);
+    margin: 0 0 4px 0;
+    line-height: 1.2;
+}
+.cu-author-role {
+    font-size: 14px;
+    color: #777;
+    margin: 0;
+}
+/* Slider Dots override for sleekness */
+.slider-active-3-item-dot .slick-dots {
+    display: flex !important;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    margin-top: 20px;
+    padding: 0;
+    list-style: none;
+}
+.slider-active-3-item-dot .slick-dots li {
+    margin: 0;
+    width: auto;
+    height: auto;
+    border: none !important;
+}
+.slider-active-3-item-dot .slick-dots li::after {
+    display: none !important;
+}
+.slider-active-3-item-dot .slick-dots li button {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: #ccc;
+    border: none;
+    padding: 0;
+    text-indent: -9999px;
+    transition: background 0.3s ease, transform 0.3s ease;
+}
+.slider-active-3-item-dot .slick-dots li.slick-active button {
+    background: var(--cu-green);
+    transform: scale(1.3);
+}
+.slider-active-3-item-dot .slick-dots li button::before {
+    display: none !important;
+}
+
+/* Tour Filters */
+.cu-tour-filters {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 12px;
+}
+.cu-filter-btn {
+    background: transparent;
+    border: 2px solid #e9ece8;
+    color: var(--cu-ink);
+    padding: 8px 24px;
+    border-radius: 50px;
+    font-weight: 500;
+    font-size: 15px;
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+.cu-filter-btn:hover {
+    border-color: var(--cu-green);
+    color: var(--cu-green);
+}
+.cu-filter-btn.active {
+    background: var(--cu-green);
+    border-color: var(--cu-green);
+    color: #fff;
+}
+
+/* Footer Social Icons */
+.social-box .social-link {
+    display: flex;
+    gap: 12px;
+    padding: 0;
+    margin: 0;
+    list-style: none;
+}
+.social-box .social-link li a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    background-color: rgba(255, 255, 255, 0.08);
+    color: #fff;
+    font-size: 18px;
+    transition: all 0.3s ease;
+    text-decoration: none;
+}
+.social-box .social-link li a:hover {
+    background-color: var(--cu-green);
+    color: #fff;
+    transform: translateY(-3px);
+}
+
+/* Button Icon Alignment Fix */
+.main-btn i {
+    display: inline-flex !important;
+    align-items: center;
+    justify-content: center;
+}

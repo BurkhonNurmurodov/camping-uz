@@ -1,0 +1,54 @@
+# ---- Camping Uzbekistan (Apache) ----
+
+# No directory listings
+Options -Indexes
+
+# UTF-8 by default
+AddDefaultCharset UTF-8
+
+# Don't advertise PHP version
+<IfModule mod_headers.c>
+    Header always set X-Content-Type-Options "nosniff"
+    Header always set X-Frame-Options "SAMEORIGIN"
+    Header always set Referrer-Policy "strict-origin-when-cross-origin"
+    Header unset X-Powered-By
+</IfModule>
+
+# Block dotfiles (.env, .git, etc.) and raw SQL / config dumps
+<FilesMatch "^\.|\.(sql|sqlite|ini|log|md|sh|bak)$">
+    <IfModule mod_authz_core.c>
+        Require all denied
+    </IfModule>
+    <IfModule !mod_authz_core.c>
+        Order allow,deny
+        Deny from all
+    </IfModule>
+</FilesMatch>
+
+# URL Rewriting for Clean URLs
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+
+    # Parameter routes
+    RewriteRule ^tour/([^/]+)$ tour.php?slug=$1 [L,QSA]
+    RewriteRule ^register/([^/]+)$ register.php?tour=$1 [L,QSA]
+    RewriteRule ^admin/tour-edit/([0-9]+)$ admin/tour-edit.php?id=$1 [L,QSA]
+    RewriteRule ^admin/guide-edit/([0-9]+)$ admin/guide-edit.php?id=$1 [L,QSA]
+    RewriteRule ^admin/testimonial-edit/([0-9]+)$ admin/testimonial-edit.php?id=$1 [L,QSA]
+
+    # Map extensionless URLs to .php files
+    RewriteCond %{REQUEST_FILENAME} !-d
+    RewriteCond %{REQUEST_FILENAME}\.php -f
+    RewriteRule ^(.*)$ $1.php [L,QSA]
+</IfModule>
+
+# Long-cache static assets
+<IfModule mod_expires.c>
+    ExpiresActive On
+    ExpiresByType text/css "access plus 30 days"
+    ExpiresByType application/javascript "access plus 30 days"
+    ExpiresByType image/jpeg "access plus 30 days"
+    ExpiresByType image/png "access plus 30 days"
+    ExpiresByType image/webp "access plus 30 days"
+    ExpiresByType font/woff2 "access plus 90 days"
+</IfModule>

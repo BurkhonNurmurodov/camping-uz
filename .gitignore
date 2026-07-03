@@ -1,0 +1,16 @@
+# Local secrets
+app/config.local.php
+
+# Uploaded media (keep the folders, ignore contents)
+uploads/*
+!uploads/.gitkeep
+!uploads/*/
+!uploads/**/.htaccess
+!uploads/.htaccess
+
+# OS / editor
+.DS_Store
+Thumbs.db
+
+# Build artifacts from the admin theme reference
+_ref_urbix/_build/node_modules/
