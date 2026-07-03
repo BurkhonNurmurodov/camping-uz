@@ -31,7 +31,7 @@ if (!defined('DEFAULT_ADMIN_PASS')) define('DEFAULT_ADMIN_PASS', 'password');
 // ---- Paths ----
 if (!defined('APP_ROOT')) define('APP_ROOT', dirname(__DIR__));               // camping-uz/
 if (!defined('UPLOAD_DIR')) define('UPLOAD_DIR', APP_ROOT . '/uploads');        // filesystem
-if (!defined('UPLOAD_URL')) define('UPLOAD_URL', BASE_PATH . '/uploads');       // web
+if (!defined('UPLOAD_URL')) define('UPLOAD_URL', getenv('UPLOAD_URL') ?: BASE_PATH . '/uploads');       // web
 
 // ---- Security ----
 if (!defined('APP_DEBUG')) define('APP_DEBUG', true); // set false in production
