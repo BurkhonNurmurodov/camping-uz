@@ -1,10 +1,10 @@
 /* ===========================================================
    Silk Naviora — public site styles (layered on Gowilds)
-   Palette: blue #0d2444 / deep blue #06152a / ink #1c231f / gold #bb9157
+   Palette: blue #0d2444 / deep blue #06152a / ink #08101a / gold #bb9157
    =========================================================== */
 
 :root{
-  --cu-green:#0d2444; --cu-deep:#06152a; --cu-ink:#1c231f; --cu-sand:#bb9157;
+  --cu-green:#0d2444; --cu-deep:#06152a; --cu-ink:#08101a; --cu-sand:#bb9157;
 }
 
 /* ---------- Header: transparent → sticky, logo scales ---------- */
@@ -78,8 +78,8 @@
 .cu-hero-decor {
     background-color: #161b18 !important; /* Dark ink base */
     background-image: 
-        radial-gradient(circle at 15% 100%, rgba(99, 171, 69, 0.3) 0%, transparent 60%),
-        radial-gradient(circle at 85% 0%, rgba(247, 146, 30, 0.15) 0%, transparent 50%),
+        radial-gradient(circle at 15% 100%, rgba(13, 36, 68, 0.3) 0%, transparent 60%),
+        radial-gradient(circle at 85% 0%, rgba(187, 145, 87, 0.15) 0%, transparent 50%),
         linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px),
         linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px) !important;
     background-size: 100% 100%, 100% 100%, 40px 40px, 40px 40px !important;
@@ -88,7 +88,7 @@
 
 /* ---------- Sections ---------- */
 .cu-section{ padding:95px 0; }
-.cu-section--tint{ background:#f9f9f7; }
+.cu-section--tint{ background:#f5f8fb; }
 .cu-sec-head{ margin-bottom:46px; }
 .cu-sec-head .sub-title{ color:var(--cu-green); font-weight:600; text-transform:uppercase; letter-spacing:1px; }
 .cu-sec-head h2{ font-weight:700; margin-top:8px; }
@@ -139,7 +139,7 @@
 .cu-richtext img{ max-width:100%; height:auto; border-radius:10px; margin:.5em 0; }
 .cu-richtext blockquote{ border-left:4px solid var(--cu-green); padding:6px 18px; margin:1.2em 0;
   color:var(--cu-ink); background:#f3f6f1; border-radius:0 8px 8px 0; }
-.cu-richtext pre,.cu-richtext code{ background:#1c231f; color:#e8efe6; border-radius:6px; }
+.cu-richtext pre,.cu-richtext code{ background:#08101a; color:#e8efe6; border-radius:6px; }
 .cu-richtext code{ padding:2px 6px; font-size:.9em; }
 .cu-richtext pre{ padding:14px 16px; overflow:auto; }
 
