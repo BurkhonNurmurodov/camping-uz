@@ -189,3 +189,43 @@ CREATE TABLE IF NOT EXISTS contact_messages (
   PRIMARY KEY (id),
   KEY idx_messages_status (status)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- ----------------------------------------------------------
+-- Categories
+-- ----------------------------------------------------------
+CREATE TABLE IF NOT EXISTS categories (
+  id          INT UNSIGNED NOT NULL AUTO_INCREMENT,
+  slug        VARCHAR(190) NOT NULL,
+  title_en    VARCHAR(190) NOT NULL,
+  title_ru    VARCHAR(190) NOT NULL,
+  sort_order  INT NOT NULL DEFAULT 0,
+  PRIMARY KEY (id),
+  UNIQUE KEY uq_categories_slug (slug)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+CREATE TABLE IF NOT EXISTS tour_categories (
+  tour_id     INT UNSIGNED NOT NULL,
+  category_id INT UNSIGNED NOT NULL,
+  PRIMARY KEY (tour_id, category_id),
+  KEY idx_tc_category (category_id),
+  CONSTRAINT fk_tc_tour FOREIGN KEY (tour_id) REFERENCES tours (id) ON DELETE CASCADE,
+  CONSTRAINT fk_tc_category FOREIGN KEY (category_id) REFERENCES categories (id) ON DELETE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- ----------------------------------------------------------
+-- Private Tour Requests
+-- ----------------------------------------------------------
+CREATE TABLE IF NOT EXISTS private_tour_requests (
+  id            INT UNSIGNED NOT NULL AUTO_INCREMENT,
+  name          VARCHAR(160) NOT NULL,
+  email         VARCHAR(190) NOT NULL,
+  whatsapp      VARCHAR(40) NULL,
+  group_size    VARCHAR(40) NULL,
+  dates_info    VARCHAR(190) NULL,
+  destinations  TEXT NULL, 
+  notes         TEXT NULL,
+  status        ENUM('new','handled') NOT NULL DEFAULT 'new',
+  created_at    TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  PRIMARY KEY (id),
+  KEY idx_ptr_status (status)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
