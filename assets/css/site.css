@@ -1,10 +1,10 @@
 /* ===========================================================
    Silk Naviora — public site styles (layered on Gowilds)
-   Palette: green #63ab45 / deep #0b3d2c / ink #1c231f / sand #f7921e
+   Palette: blue #0d2444 / deep blue #06152a / ink #1c231f / gold #bb9157
    =========================================================== */
 
 :root{
-  --cu-green:#63ab45; --cu-deep:#0b3d2c; --cu-ink:#1c231f; --cu-sand:#f7921e;
+  --cu-green:#0d2444; --cu-deep:#06152a; --cu-ink:#1c231f; --cu-sand:#bb9157;
 }
 
 /* ---------- Header: transparent → sticky, logo scales ---------- */
