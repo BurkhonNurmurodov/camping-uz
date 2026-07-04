@@ -21,7 +21,11 @@ $head_title = $head_title ?? setting('agency_name_' . current_lang(), 'Silk Navi
         <meta property="og:image" content="<?= e(upload_url($ogImage)) ?>">
     <?php endif; ?>
 
-    <link rel="shortcut icon" href="<?= BASE_PATH ?>/assets/images/favicon.ico" type="image/png">
+    <?php if ($favicon = setting('favicon')): ?>
+        <link rel="shortcut icon" href="<?= e(upload_url($favicon)) ?>">
+    <?php else: ?>
+        <link rel="shortcut icon" href="<?= BASE_PATH ?>/assets/images/favicon.ico" type="image/png">
+    <?php endif; ?>
 
     <!-- Without JS, reveal animated content and hide the preloader. -->
     <noscript><style>.wow{visibility:visible!important}.preloader{display:none!important}</style></noscript>
