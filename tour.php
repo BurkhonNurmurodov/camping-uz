@@ -56,8 +56,50 @@ function guide_social(array $s): array
 }
 
 $head_title = $title . ' — ' . setting('agency_name_' . $lang, 'Silk Naviora');
+$meta_desc = $desc; // will be cleaned in head.php
+$canonical_url = (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? 'https' : 'http') . '://' . ($_SERVER['HTTP_HOST'] ?? 'silknaviora.com') . url('tour/' . $slug);
+
 require __DIR__ . '/partials/head.php';
 ?>
+
+<!-- SEO Schema: TouristTrip -->
+<script type="application/ld+json">
+<?php
+$schema = [
+    "@context" => "https://schema.org",
+    "@type" => "TouristTrip",
+    "name" => $title,
+    "description" => mb_strimwidth(trim(preg_replace('/\s+/', ' ', strip_tags($desc))), 0, 300, '...'),
+    "url" => $canonical_url,
+    "provider" => [
+        "@type" => "TravelAgency",
+        "name" => setting('agency_name_' . $lang, 'Silk Naviora')
+    ]
+];
+if ($tour['poster']) {
+    $schema['image'] = (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? 'https' : 'http') . '://' . ($_SERVER['HTTP_HOST'] ?? 'silknaviora.com') . BASE_PATH . upload_url($tour['poster']);
+}
+if ($points) {
+    $schema['itinerary'] = [
+        "@type" => "ItemList",
+        "itemListElement" => []
+    ];
+    foreach ($points as $idx => $p) {
+        $pt_label = lang_field($p, 'label') ?: ($p['lat'] . ', ' . $p['lng']);
+        $schema['itinerary']['itemListElement'][] = [
+            "@type" => "ListItem",
+            "position" => $idx + 1,
+            "item" => [
+                "@type" => "TouristAttraction",
+                "name" => $pt_label
+            ]
+        ];
+    }
+}
+echo json_encode($schema, JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES | JSON_PRETTY_PRINT);
+?>
+</script>
+
 
 <section class="cu-section" style="padding-top:150px">
     <div class="container">

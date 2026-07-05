@@ -35,7 +35,8 @@ require __DIR__ . '/partials/head.php';
     </div>
     <div class="cu-hero__overlay"></div>
     <div class="cu-hero__content">
-        <h1 class="cu-hero__title" data-animation="fadeInDown" data-delay=".2s"><?= e($name) ?></h1>
+        <h1 class="cu-hero__title" style="font-size: 1px; color: transparent; position: absolute; overflow: hidden; white-space: nowrap; width: 1px; height: 1px;">Travel Central Asia & Uzbekistan - <?= e($name) ?></h1>
+        <div class="cu-hero__title" style="font-size: clamp(3rem, 6vw, 5.5rem); font-weight: 800; line-height: 1.1; margin-bottom: 20px;" data-animation="fadeInDown" data-delay=".2s"><?= e($name) ?></div>
         <p class="cu-hero__moto" data-animation="fadeInUp" data-delay=".4s"><?= e($moto) ?></p>
         <a href="<?= url('tours') ?>" class="main-btn primary-btn" data-animation="fadeInUp" data-delay=".6s">
             <?= e(t('nav_tours')) ?><i class="fas fa-paper-plane"></i>
@@ -43,6 +44,28 @@ require __DIR__ . '/partials/head.php';
     </div>
     <a href="#tours" class="cu-hero__scroll"><i class="far fa-angle-down"></i></a>
 </section>
+
+<!-- SEO Schema: TravelAgency -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "TravelAgency",
+  "name": <?= json_encode($name) ?>,
+  "description": <?= json_encode($moto) ?>,
+  "url": "<?= e($protocol . '://' . $host . BASE_PATH) ?>",
+  <?php if ($heroImage): ?>
+  "image": "<?= e($protocol . '://' . $host . BASE_PATH . upload_url($heroImage)) ?>",
+  <?php endif; ?>
+  "areaServed": [
+    { "@type": "Country", "name": "Uzbekistan" },
+    { "@type": "Country", "name": "Kazakhstan" },
+    { "@type": "Country", "name": "Kyrgyzstan" },
+    { "@type": "Country", "name": "Tajikistan" },
+    { "@type": "Country", "name": "Turkmenistan" }
+  ]
+}
+</script>
+
 
 <!--====== Upcoming tours ======-->
 <section class="cu-section" id="tours">
