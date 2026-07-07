@@ -125,11 +125,7 @@ echo json_encode($schema, JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES | JSON
                     <?php if ($dates): ?>
                         <p class="cu-detail-meta mt-10"><i class="far fa-calendar-alt me-2"></i><?= e($dates) ?></p>
                     <?php endif; ?>
-                    <?php if ($tour['status'] === 'upcoming'): ?>
-                        <div class="mt-30 wow fadeInUp">
-                            <a href="<?= url('register/' . urlencode($tour['slug'])) ?>" class="main-btn primary-btn"><?= e(t('register_cta')) ?><i class="fas fa-paper-plane"></i></a>
-                        </div>
-                    <?php endif; ?>
+
                 </div>
 
                 <?php if ($desc && trim(strip_tags($desc)) !== ''): ?>
@@ -199,7 +195,10 @@ echo json_encode($schema, JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES | JSON
         <?php endif; ?>
 
         <div class="text-center mt-50">
-            <a href="<?= url('tours') ?>" class="main-btn"><i class="far fa-long-arrow-left me-2"></i><?= e(t('sec_upcoming_tours')) ?></a>
+            <?php if ($tour['status'] === 'upcoming'): ?>
+                <a href="<?= url('register/' . urlencode($tour['slug'])) ?>" class="main-btn primary-btn" style="margin-right: 15px; margin-bottom: 15px;"><?= e(t('register_cta')) ?><i class="fas fa-paper-plane"></i></a>
+            <?php endif; ?>
+            <a href="<?= url('tours') ?>" class="main-btn" style="margin-bottom: 15px;"><i class="far fa-long-arrow-left me-2"></i><?= e(t('sec_upcoming_tours')) ?></a>
         </div>
     </div>
 </section>
