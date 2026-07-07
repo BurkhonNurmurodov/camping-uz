@@ -198,7 +198,7 @@ echo json_encode($schema, JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES | JSON
             <?php if ($tour['status'] === 'upcoming'): ?>
                 <a href="<?= url('register/' . urlencode($tour['slug'])) ?>" class="main-btn primary-btn mb-3"><?= e(t('register_cta')) ?><i class="fas fa-paper-plane"></i></a>
             <?php endif; ?>
-            <a href="<?= url('tours') ?>" class="main-btn"><i class="far fa-long-arrow-left me-2"></i><?= e(t('sec_upcoming_tours')) ?></a>
+            <a href="<?= url('tours') ?>" class="text-decoration-none" style="font-family: 'Prompt', sans-serif; font-weight: 600; font-size: 16px; color: #1c2b39;"><i class="far fa-long-arrow-left me-2"></i><?= e(t('sec_upcoming_tours')) ?></a>
         </div>
     </div>
 </section>
