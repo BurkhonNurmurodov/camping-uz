@@ -194,15 +194,11 @@ echo json_encode($schema, JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES | JSON
             </div>
         <?php endif; ?>
 
-        <div class="text-center mt-50">
+        <div class="d-flex flex-column align-items-center mt-50">
             <?php if ($tour['status'] === 'upcoming'): ?>
-                <div class="mb-3">
-                    <a href="<?= url('register/' . urlencode($tour['slug'])) ?>" class="main-btn primary-btn"><?= e(t('register_cta')) ?><i class="fas fa-paper-plane"></i></a>
-                </div>
+                <a href="<?= url('register/' . urlencode($tour['slug'])) ?>" class="main-btn primary-btn mb-3"><?= e(t('register_cta')) ?><i class="fas fa-paper-plane"></i></a>
             <?php endif; ?>
-            <div>
-                <a href="<?= url('tours') ?>" class="main-btn"><i class="far fa-long-arrow-left me-2"></i><?= e(t('sec_upcoming_tours')) ?></a>
-            </div>
+            <a href="<?= url('tours') ?>" class="main-btn"><i class="far fa-long-arrow-left me-2"></i><?= e(t('sec_upcoming_tours')) ?></a>
         </div>
     </div>
 </section>
